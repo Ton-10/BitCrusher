@@ -8,6 +8,7 @@ public class Custom : MonoBehaviour
     public float CustomMaxTime,CustomTime;
     public GameObject CustomGUI, cardUI, CardBase, Indicators;
     private List<GameObject> cardQueue;
+    private List<Card> playerCards;
     private Button butto;
     private bool cust = true;
     private Image Bar;
@@ -17,6 +18,7 @@ public class Custom : MonoBehaviour
     void Start()
     {
         cardQueue = transform.GetComponent<CardSelect>().CardQueue;
+        playerCards = gameObject.GetComponent<CardLibrary>().Inventory;
         Bar = CustomGUI.transform.Find("Bar").GetComponent<Image>();
         Bar.fillAmount = 1;
         CustomTime = CustomMaxTime;
@@ -66,29 +68,13 @@ public class Custom : MonoBehaviour
                     for (int ii = 0; ii < 3; ii++)
                     {
                         // fill in cards
-                        int typeChance = Random.Range(1, 6);
-                        if (typeChance < 5)
-                        {
-                            Card card = ScriptableObject.CreateInstance("Card001") as Card;
-                            card.data.CardObj.transform.SetParent(cardUI.transform);
+                        int cardPick = Random.Range(0, playerCards.Count-1);
+                        Card card = playerCards[cardPick];
+                        playerCards.RemoveAt(cardPick);
+                        card.data.CardObj.transform.SetParent(cardUI.transform);
 
-                            card.data.CardObj.name = "Card";
-                            card.data.CardObj.transform.localPosition = new Vector3(-260 + (260 * ii), 150 - (300 * i), 0);
-                            card.data.Player = gameObject;
-                            card.data.IndicatorField = Indicators;
-                        }
-                        else
-                        {
-                            Card card = ScriptableObject.CreateInstance("Card090") as Card;
-                            card.data.CardObj.transform.SetParent(cardUI.transform);
-
-                            card.data.CardObj.name = "Card";
-                            card.data.CardObj.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.8f);
-                            card.data.CardObj.transform.localPosition = new Vector3(-260 + (260 * ii), 150 - (300 * i), 0);
-
-                            card.data.Player = gameObject;
-                            card.data.IndicatorField = Indicators;
-                        }
+                        card.data.CardObj.transform.localPosition = new Vector3(-260 + (260 * ii), 150 - (300 * i), 0);
+                        card.data.IndicatorField = Indicators;
                     }
                 }
             }
