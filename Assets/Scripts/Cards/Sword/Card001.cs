@@ -10,7 +10,7 @@ public class Card001 : Card
 
     public Card001()
     {
-        data = new CardData(105, 2, 1, int.Parse(GetType().ToString().Split('d')[1]), 5);
+        data = new CardData(60, 2, 1, int.Parse(GetType().ToString().Split('d')[1]), 5);
         
     }
     public void OnEnable()
