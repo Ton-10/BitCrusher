@@ -54,12 +54,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2461364486021156885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -92,6 +94,7 @@ GameObject:
   - component: {fileID: 7555336221860023269}
   - component: {fileID: 8044530885612727707}
   - component: {fileID: 6518489324363874249}
+  - component: {fileID: 6527935947096895385}
   m_Layer: 0
   m_Name: PlrModel
   m_TagString: Untagged
@@ -157,8 +160,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerField: {fileID: 0}
-  CanNotMove: 0
   PlrHpScript: {fileID: 6518489324363874249}
+  Overlay: {fileID: 0}
+  PlayerX: 0
+  PlayerY: 0
+  CanMove: 0
 --- !u!114 &7555336221860023269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +208,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60bc26ae0aeebf04c80f5cf6772a3076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Alive: 0
   HpUI: {fileID: 2461364486021156885}
+--- !u!114 &6527935947096895385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7445383706749559207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f6520d766b3ed49b27b556e8b2a970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Inventory: []
+  BattleCards: []
 --- !u!1 &8854321993277506050
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +293,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8854321993277506050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
@@ -285,6 +306,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &454947138342632713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +316,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8854321993277506050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -316,6 +338,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8726579604878313413, guid: 131d7886a7f57564a8bc1adbe6f71809,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726579604878313413, guid: 131d7886a7f57564a8bc1adbe6f71809,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -331,6 +358,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8726579604878313413, guid: 131d7886a7f57564a8bc1adbe6f71809,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726579604878313413, guid: 131d7886a7f57564a8bc1adbe6f71809,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -343,16 +375,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8726579604878313413, guid: 131d7886a7f57564a8bc1adbe6f71809,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8726579604878313413, guid: 131d7886a7f57564a8bc1adbe6f71809,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8726579604878313413, guid: 131d7886a7f57564a8bc1adbe6f71809,
         type: 3}
