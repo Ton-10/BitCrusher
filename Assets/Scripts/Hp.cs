@@ -32,9 +32,11 @@ public class Hp : MonoBehaviour
     }
     void OnTriggerEnter(Collider hit)
     {
-        if(hit.gameObject.name == "Indicator" && !hit.gameObject.GetComponent<DamageS>().damaged)
+        DamageS damageScript = hit.gameObject.GetComponent<DamageS>();
+        if (hit.gameObject.name == "Indicator" && !damageScript.damaged && !damageScript.hits.Contains(gameObject))
         {
-            HP -= hit.gameObject.GetComponent<DamageS>().Damage;
+            damageScript.SyncHits(gameObject);
+            HP -= damageScript.Damage;
             Debug.Log("Collision");
         }
     }
