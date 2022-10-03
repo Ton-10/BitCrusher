@@ -25,12 +25,13 @@ public class Card001 : Card
         data.IsUsedUp = true;
         data.Player.GetComponent<Movement>().WaitForTime(data.CooldownFrames / 60f);
         data.Player.transform.Find("Body").gameObject.GetComponent<Animator>().SetTrigger("Shoot");
-
+        List<DamageS> scripts = new List<DamageS>();
         for (int i = 1; i < data.RangeX + 1; i++)
         {
             data.CurIndicator = Instantiate(data.Indicator, data.Player.transform.position, Quaternion.Euler(0, -90, 0));
             data.CurIndicator.name = "Indicator";
             data.CurIndicator.transform.parent = data.IndicatorField.transform;
+            scripts.Add(data.CurIndicator.GetComponent<DamageS>());
             data.CurIndicator.GetComponent<DamageS>().Damage = data.Attack;
             data.CurIndicator.transform.localPosition = 
                 new Vector3(
@@ -39,6 +40,11 @@ public class Card001 : Card
                     data.CurIndicator.transform.localPosition.z + 0.34f * i);
             data.CurIndicator.transform.localScale = new Vector3(0.04f, 0.04f, 1);
             Destroy(data.CurIndicator, data.CooldownFrames / 60f);
+        }
+        // Sync damage instances
+        foreach (DamageS script in scripts)
+        {
+            script.DamageInstances = scripts;
         }
     }
 }
