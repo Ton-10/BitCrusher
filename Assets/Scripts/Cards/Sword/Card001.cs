@@ -23,7 +23,7 @@ public class Card001 : Card
     public override void Activate()
     {
         data.IsUsedUp = true;
-        data.Player.GetComponent<Movement>().WaitForTime(data.CooldownFrames / 60f);
+        data.Player.GetComponent<CombatMovement>().WaitForTime(data.CooldownFrames / 60f);
         data.Player.transform.Find("Body").gameObject.GetComponent<Animator>().SetTrigger("Shoot");
         List<DamageS> scripts = new List<DamageS>();
         for (int i = 1; i < data.RangeX + 1; i++)

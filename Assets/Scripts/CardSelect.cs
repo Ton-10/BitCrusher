@@ -15,7 +15,7 @@ public class CardSelect : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if (transform.GetComponent<Movement>().CanMove)
+            if (transform.GetComponent<CombatMovement>().CanMove)
             {
                 if (CardQueue.Count > 0)
                 {

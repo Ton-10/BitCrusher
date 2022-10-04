@@ -22,7 +22,7 @@ public class Custom : MonoBehaviour
         Bar = CustomGUI.transform.Find("Bar").GetComponent<Image>();
         Bar.fillAmount = 1;
         CustomTime = CustomMaxTime;
-        transform.GetComponent<Movement>().CanMove = true;
+        transform.GetComponent<CombatMovement>().CanMove = true;
         cardUI = CustomGUI.transform.Find("CardUI").gameObject;
         butto = cardUI.transform.Find("Button").GetComponent<Button>();
         butto.onClick.AddListener(TaskOnClick);
@@ -30,7 +30,7 @@ public class Custom : MonoBehaviour
     void TaskOnClick()
     {
         cardUI.SetActive(false);
-        transform.GetComponent<Movement>().CanMove = true;
+        transform.GetComponent<CombatMovement>().CanMove = true;
         cust = true;
      }
     // Update is called once per frame
@@ -61,7 +61,7 @@ public class Custom : MonoBehaviour
                 cust = false;
                 Bar.fillAmount = 1;
                 CustomTime = CustomMaxTime;
-                transform.GetComponent<Movement>().CanMove = false;
+                transform.GetComponent<CombatMovement>().CanMove = false;
                 cardUI.SetActive(true);
                 for (int i = 0; i < 2; i++)
                 {

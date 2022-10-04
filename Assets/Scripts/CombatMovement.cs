@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class CombatMovement : MonoBehaviour
 {
     public GameObject PlayerField;
     public Hp PlrHpScript;
@@ -56,7 +56,6 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AnimatorStateInfo stateIndo = anim.GetCurrentAnimatorStateInfo(0);
         if (WaitTime < Time.time)
         {
             if (Input.anyKeyDown)
