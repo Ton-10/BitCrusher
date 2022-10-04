@@ -30,7 +30,7 @@ public class MapMovement : MonoBehaviour
             {
                 if (CanMove)
                 {
-                    Vector3 move = new Vector3(0, Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal"));
+                    Vector3 move = new Vector3(-Input.GetAxisRaw("Vertical"),0 ,Input.GetAxisRaw("Horizontal"));
                     move = move.normalized * MoveSpeed;
                     body.velocity = move;
                     UpdatePosition();
