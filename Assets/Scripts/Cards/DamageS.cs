@@ -15,6 +15,7 @@ public class DamageS : MonoBehaviour
     }
     
     public enum CardType { SingleStage, MultiStage };
+    // Part of the logic to prevent a move from hitting multiple times on one enemy
     public void SyncHits(GameObject hit)
     {
         foreach (DamageS damageInstance in DamageInstances)
