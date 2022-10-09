@@ -21,12 +21,14 @@ public class Custom : MonoBehaviour
         library = gameObject.GetComponent<CardLibrary>();
         cardQueue = transform.GetComponent<CardSelect>().CardQueue;
         Bar = CustomGUI.transform.Find("Bar").GetComponent<Image>();
-        Bar.fillAmount = 1;
+        Bar.fillAmount = 0;
+        CustomGUI.transform.Find("Bar").gameObject.SetActive(true);
         CustomTime = CustomMaxTime;
         transform.GetComponent<CombatMovement>().CanMove = true;
         cardUI = CustomGUI.transform.Find("CardUI").gameObject;
         butto = cardUI.transform.Find("Button").GetComponent<Button>();
         butto.onClick.AddListener(TaskOnClick);
+        ShowCust();
     }
     void TaskOnClick()
     {
@@ -60,30 +62,7 @@ public class Custom : MonoBehaviour
                         }
                     }
                 }
-                cust = false;
-                playerCards = new List<Card>(library.CurrentSet);
-                Bar.fillAmount = 1;
-                CustomTime = CustomMaxTime;
-                transform.GetComponent<CombatMovement>().CanMove = false;
-                cardUI.SetActive(true);
-                Debug.Log(playerCards.Count);
-                for (int i = 0; i < 2; i++)
-                {
-                    for (int ii = 0; ii < 3; ii++)
-                    {
-                        // fill in cards
-                        int cardPick = Random.Range(0, playerCards.Count-1);
-                        Card card = playerCards[cardPick];
-                        playerCards.RemoveAt(cardPick);
-                        GameObject cardObj = Instantiate(card.data.CardObj);
-                        cardObj.name = "Card";
-                        cardObj.transform.SetParent(cardUI.transform);
-                        cardObj.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-
-                        cardObj.transform.localPosition = new Vector3(-260 + (260 * ii), 150 - (300 * i), 0);
-                        card.data.IndicatorField = Indicators;
-                    }
-                }
+                ShowCust();
             }
         }
         // Check if the left mouse button was clicked
@@ -114,6 +93,33 @@ public class Custom : MonoBehaviour
                     }
                 }
             } 
+        }
+    }
+    public void ShowCust()
+    {
+        cust = false;
+        playerCards = new List<Card>(library.CurrentSet);
+        Bar.fillAmount = 1;
+        CustomTime = CustomMaxTime;
+        transform.GetComponent<CombatMovement>().CanMove = false;
+        cardUI.SetActive(true);
+        Debug.Log(playerCards.Count);
+        for (int i = 0; i < 2; i++)
+        {
+            for (int ii = 0; ii < 3; ii++)
+            {
+                // fill in cards
+                int cardPick = Random.Range(0, playerCards.Count - 1);
+                Card card = playerCards[cardPick];
+                playerCards.RemoveAt(cardPick);
+                GameObject cardObj = Instantiate(card.data.CardObj);
+                cardObj.name = "Card";
+                cardObj.transform.SetParent(cardUI.transform);
+                cardObj.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
+                cardObj.transform.localPosition = new Vector3(-260 + (260 * ii), 150 - (300 * i), 0);
+                card.data.IndicatorField = Indicators;
+            }
         }
     }
 }

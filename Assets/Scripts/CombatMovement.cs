@@ -138,7 +138,7 @@ public class CombatMovement : MonoBehaviour
     public void UpdatePosition()
     {
         PlayMoveAnimation();
-        transform.position = GameTiles[PlayerX][PlayerY].transform.position + new Vector3(1,0,0);
+        transform.position = GameTiles[PlayerX][PlayerY].transform.position + new Vector3(1,2,0);
     }
     public void WaitForTime(float t)
     {
