@@ -27,7 +27,6 @@ public class CyCopController : EnemyController
         Vector3 fwd = transform.TransformDirection(Vector3.right);
         if (Physics.Raycast(transform.position, fwd, out RaycastHit hit, 100) && AttackQueued == false && movesTillAttack == 0)
         {
-            Debug.Log($"Hit {hit.transform.gameObject.name}");
             if (hit.transform.gameObject.CompareTag("Player"))
             {
                 Attack();
@@ -99,7 +98,6 @@ public class CyCopController : EnemyController
             AttackQueued = false;
             CanMove = false;
             movesTillAttack = 3;
-            Debug.Log("Enemy attacked");
             StartCoroutine(card.Activate());
 
         }
