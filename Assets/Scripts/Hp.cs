@@ -30,16 +30,6 @@ public class Hp : MonoBehaviour
             Alive = false;
         }
     }
-    void OnTriggerEnter(Collider hit)
-    {
-        DamageS damageScript = hit.gameObject.GetComponent<DamageS>();
-        if (hit.gameObject.name == "Indicator" && !damageScript.damaged && !damageScript.hits.Contains(gameObject))
-        {
-            damageScript.SyncHits(gameObject);
-            HP -= damageScript.Damage;
-            Debug.Log("Collision");
-        }
-    }
     public void UpdateHpUI()
     {
         HpUI.GetComponent<Text>().text = "" + HP;

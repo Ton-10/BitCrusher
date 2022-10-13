@@ -5,10 +5,11 @@ using UnityEngine;
 public class Card : ScriptableObject
 {
     public CardData data;
-
-    public virtual void Activate()
+    virtual public bool Hit{ get; set; }
+    public virtual IEnumerator Activate()
     {
         Debug.Log($"Card: {data.Id} Activated");
+        yield return null;
     }
 
     public struct CardData
