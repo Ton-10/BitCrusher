@@ -19,7 +19,7 @@ public class CardSelect : MonoBehaviour
             {
                 if (CardQueue.Count > 0)
                 {
-                    CardQueue[0].GetComponent<Linker>().cardScript.Activate();
+                    StartCoroutine(CardQueue[0].GetComponent<Linker>().cardScript.Activate());
                     CardQueue.RemoveAt(0);
                 }
             }

@@ -37,7 +37,6 @@ public class CardLibrary : MonoBehaviour
             card.data.CardObj.name = "Card";
             card.data.Player = gameObject;
             card.data.CardObj.transform.SetParent(card.data.Player.transform);
-            card.data.CardObj.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.8f);
             Inventory.Add(card);
         }
         CurrentSet = new List<Card>(Inventory);

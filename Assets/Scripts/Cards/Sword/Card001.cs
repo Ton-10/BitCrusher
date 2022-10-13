@@ -20,7 +20,7 @@ public class Card001 : Card
         data.CardObj.gameObject.transform.Find("Attack").GetComponent<Text>().text = data.Attack.ToString();
         data.Indicator = Instantiate(Resources.Load(Indicator) as GameObject);
     }
-    public override void Activate()
+    public override IEnumerator Activate()
     {
         data.IsUsedUp = true;
         data.Player.GetComponent<CombatMovement>().WaitForTime(data.CooldownFrames / 60f);
@@ -46,5 +46,6 @@ public class Card001 : Card
         {
             script.DamageInstances = scripts;
         }
+        yield return null;
     }
 }

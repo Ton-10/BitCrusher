@@ -14,6 +14,7 @@ public class CombatManager : MonoBehaviour
         Cam.transform.rotation = Quaternion.Euler(0, -90, 0);
         Cam.transform.position = gameObject.GetComponent<CombatMovement>().PlayerField.transform.Find("Center").position + new Vector3(50, 0, 0);
         gameObject.GetComponent<Custom>().enabled = true;
+        enemy.GetComponent<EnemyController>().CanMove = true;
         // Add enemy to grid
 
     }
