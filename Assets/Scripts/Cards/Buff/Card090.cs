@@ -20,6 +20,7 @@ public class Card090 : Card
         data.CardObj.gameObject.transform.Find("Attack").GetComponent<Text>().text = data.Attack.ToString();
         data.CardObj.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.8f);
         data.Indicator = Instantiate(Resources.Load(Indicator) as GameObject);
+        data.Indicator.transform.SetParent(data.CardObj.transform);
     }
     public override IEnumerator Activate()
     {

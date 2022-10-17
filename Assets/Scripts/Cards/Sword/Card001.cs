@@ -19,6 +19,7 @@ public class Card001 : Card
         data.CardObj.GetComponent<Linker>().cardScript = this;
         data.CardObj.gameObject.transform.Find("Attack").GetComponent<Text>().text = data.Attack.ToString();
         data.Indicator = Instantiate(Resources.Load(Indicator) as GameObject);
+        data.Indicator.transform.SetParent(data.CardObj.transform);
     }
     public override IEnumerator Activate()
     {
