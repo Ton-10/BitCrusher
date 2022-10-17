@@ -1,16 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatMovement : MonoBehaviour
+public class CombatMovement : MovementController
 {
-    public GameObject PlayerField;
     public Hp PlrHpScript;
-    public GameObject Overlay;
-    public List<List<GameObject>> GameTiles = new List<List<GameObject>>();
-    public int PlayerX;
-    public int PlayerY;
-
-    public bool CanMove;
     private bool moveCooldown = false;
     private bool r, l, u, d;
 
@@ -21,34 +14,12 @@ public class CombatMovement : MonoBehaviour
 
     private int frames = 5;
     private Vector3 initialPos;
-    Animator anim;
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         anim = transform.Find("Body").gameObject.GetComponent<Animator>();
-        List<GameObject> tiles = new List<GameObject>();
-        foreach (Transform tile in Overlay.transform.Find("frontRow"))
-        {
-            tiles.Add(tile.gameObject);
-        }
-        AddTiles(tiles);
-        tiles = new List<GameObject>();
-        foreach (Transform tile in Overlay.transform.Find("midRow"))
-        {
-            tiles.Add(tile.gameObject);
-        }
-        AddTiles(tiles);
-        tiles = new List<GameObject>();
-        foreach (Transform tile in Overlay.transform.Find("backRow"))
-        {
-            tiles.Add(tile.gameObject);
-        }
-        AddTiles(tiles);
-        tiles = new List<GameObject>();
-
         moveCooldownFrames = frames;
-        PlayerX = 1;
-        PlayerY = 1;
         UpdatePosition();
         PlrHpScript = GetComponent<Hp>();
     }
@@ -69,9 +40,9 @@ public class CombatMovement : MonoBehaviour
                     {
                         u = !u;
                         moveCooldown = !moveCooldown;
-                        if(PlayerY > 0)
+                        if(PosY > 0)
                         {
-                            PlayerY--;
+                            PosY--;
                             UpdatePosition();
                         }
                     }
@@ -80,9 +51,9 @@ public class CombatMovement : MonoBehaviour
                     {
                         d = !d;
                         moveCooldown = !moveCooldown;
-                        if (PlayerY < 2)
+                        if (PosY < 2)
                         {
-                            PlayerY++;
+                            PosY++;
                             UpdatePosition();
                         }
                     }
@@ -91,9 +62,9 @@ public class CombatMovement : MonoBehaviour
                     {
                         l = !l;
                         moveCooldown = !moveCooldown;
-                        if (PlayerX < 2)
+                        if (PosX < 2)
                         {
-                            PlayerX++;
+                            PosX++;
                             UpdatePosition();
                         }
                     }
@@ -102,9 +73,9 @@ public class CombatMovement : MonoBehaviour
                     {
                         r = !r;
                         moveCooldown = !moveCooldown;
-                        if (PlayerX > 0)
+                        if (PosX > 0)
                         {
-                            PlayerX--;
+                            PosX--;
                             UpdatePosition();
                         }
                     }
@@ -138,18 +109,10 @@ public class CombatMovement : MonoBehaviour
     public void UpdatePosition()
     {
         PlayMoveAnimation();
-        transform.position = GameTiles[PlayerX][PlayerY].transform.position + new Vector3(1,2,0);
+        transform.position = GameTiles[PosX][PosY].transform.position + new Vector3(1,2,0);
     }
     public void WaitForTime(float t)
     {
         WaitTime = Time.time+t;
-    }
-    public void PlayMoveAnimation()
-    {
-        anim.SetTrigger("Move");
-    }
-    public void AddTiles(List<GameObject> tiles)
-    {
-        GameTiles.Add(tiles);
     }
 }

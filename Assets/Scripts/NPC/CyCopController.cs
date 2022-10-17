@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CyCopController : EnemyController
+public class CyCopController : MovementController
 {
     bool AttackQueued;
     Card card;
