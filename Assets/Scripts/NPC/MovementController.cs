@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class MovementController : MonoBehaviour
 {
     public bool CanMove, IsMoving;
     public GameObject PlayerField;
@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     public int PosX, PosY, DirX, DirY;
     public float MovementSpeed;
     public List<Card> Cards;
-    Animator anim;
+    public Animator anim;
 
     public virtual void Start()
     {
