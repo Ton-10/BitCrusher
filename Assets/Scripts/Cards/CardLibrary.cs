@@ -23,9 +23,17 @@ public class CardLibrary : MonoBehaviour
     }
     public void GiveDefaultCards()
     {
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < 15; i++)
         {
             Card card = ScriptableObject.CreateInstance("Card001") as Card;
+            card.data.CardObj.name = "Card";
+            card.data.Player = gameObject;
+            card.data.CardObj.transform.SetParent(card.data.Player.transform);
+            Inventory.Add(card);
+        }
+        for (int i = 0; i < 15; i++)
+        {
+            Card card = ScriptableObject.CreateInstance("Card050") as Card;
             card.data.CardObj.name = "Card";
             card.data.Player = gameObject;
             card.data.CardObj.transform.SetParent(card.data.Player.transform);
