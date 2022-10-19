@@ -9,7 +9,7 @@ public class MovementController : MonoBehaviour
     public GameObject Overlay;
     public List<List<GameObject>> GameTiles = new List<List<GameObject>>();
     public int PosX, PosY, DirX, DirY;
-    public float MovementSpeed;
+    public float MovementSpeed, WaitTime;
     public List<Card> Cards;
     public Animator anim;
 
@@ -48,5 +48,9 @@ public class MovementController : MonoBehaviour
     {
         Debug.Log("Added Tiles");
         GameTiles.Add(tiles);
+    }
+    public void WaitForTime(float t)
+    {
+        WaitTime = Time.time + t;
     }
 }

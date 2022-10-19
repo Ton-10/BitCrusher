@@ -10,7 +10,7 @@ public class CombatMovement : MovementController
     private float inputBuffer = 0f;
     private float deadZone = 0f;
     private float x, y;
-    private float moveCooldownFrames, WaitTime;
+    private float moveCooldownFrames;
 
     private int frames = 5;
     private Vector3 initialPos;
@@ -110,9 +110,5 @@ public class CombatMovement : MovementController
     {
         PlayMoveAnimation();
         transform.position = GameTiles[PosX][PosY].transform.position + new Vector3(1,2,0);
-    }
-    public void WaitForTime(float t)
-    {
-        WaitTime = Time.time+t;
     }
 }
