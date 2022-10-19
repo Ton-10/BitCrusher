@@ -22,7 +22,7 @@ public class Card050 : Card
             if (projecile != null)
             {
                 GameObject target = scripts[0].hits[scripts[0].hits.Count-1].gameObject;
-                target.GetComponent<CombatMovement>().WaitForTime(0.5f);
+                target.GetComponent<MovementController>().WaitForTime(0.5f);
                 GameObject shp = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 shp.GetComponent<SphereCollider>().isTrigger = true;
                 shp.transform.position = projecile.transform.position;
@@ -35,7 +35,6 @@ public class Card050 : Card
                 Destroy(shp,3f);
 
             }
-
         }
     }
 
@@ -61,9 +60,11 @@ public class Card050 : Card
         if (data.Player.CompareTag("Player"))
         {
             data.Player.GetComponent<CombatMovement>().WaitForTime(data.CooldownFrames / 60f);
+            data.Player.GetComponent<MovementController>().anim.SetTrigger("Shoot");
         }
 
-        data.Player.GetComponent<MovementController>().anim.SetTrigger("Shoot");
+        // Temporarily commented out for testing enemy
+        //data.Player.GetComponent<MovementController>().anim.SetTrigger("Shoot");
 
         if (data.Player.CompareTag("NPC"))
         {
