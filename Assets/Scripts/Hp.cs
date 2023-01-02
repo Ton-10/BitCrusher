@@ -22,18 +22,24 @@ public class Hp : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(HP <= 0 && Alive == true)
         {
             Debug.Log("dead");
             Alive = false;
         }
+        UpdateHpUI();
     }
     public void UpdateHpUI()
     {
         HpUI.GetComponent<Text>().text = "" + HP;
-        Vector3 pos = Camera.main.WorldToScreenPoint(this.transform.position) + new Vector3(0,HpUIOffest,0);
+        Vector3 pos = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(0,HpUIOffest,0);
         HpUI.transform.position = pos;
+    }
+    public void Kill()
+    {
+        // Play die animation
+        // Destroy obj when done
     }
 }

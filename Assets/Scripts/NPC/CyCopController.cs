@@ -5,19 +5,17 @@ using UnityEngine;
 public class CyCopController : MovementController
 {
     bool AttackQueued;
-    Card card;
     public int movesTillAttack = 3;
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
-        card = ScriptableObject.CreateInstance("Card050") as Card;
-        card.data.CardObj.name = "Card";
-        card.data.Player = gameObject;
-        card.data.CardObj.transform.SetParent(card.data.Player.transform);
-        card.data.IndicatorField = PlayerField.transform.Find("Plane/Indicators").gameObject;
-        Cards.Add(card);
+        Cards.Add(ScriptableObject.CreateInstance("Card050") as Card);
+        Cards[0].data.CardObj.name = "Card";
+        Cards[0].data.Player = gameObject;
+        Cards[0].data.CardObj.transform.SetParent(Cards[0].data.Player.transform);
+        Cards[0].data.IndicatorField = PlayerField.transform.Find("Plane/Indicators").gameObject;
         MovementSpeed = 10f;
     }
 
@@ -98,8 +96,7 @@ public class CyCopController : MovementController
             AttackQueued = false;
             CanMove = false;
             movesTillAttack = 3;
-            StartCoroutine(card.Activate());
-
+            StartCoroutine(Cards[0].Activate());
         }
         
     }

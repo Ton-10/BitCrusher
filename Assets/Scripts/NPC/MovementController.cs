@@ -12,7 +12,7 @@ public class MovementController : MonoBehaviour
     public float MovementSpeed, WaitTime;
     public List<Card> Cards;
     public Animator anim;
-
+   
     public virtual void Start()
     {
         //anim = transform.Find("Body").gameObject.GetComponent<Animator>();

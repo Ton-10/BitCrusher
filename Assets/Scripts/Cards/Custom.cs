@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Custom : MonoBehaviour
 {
-    public float CustomMaxTime,CustomTime;
+    public float CustomMaxTime,CustomTime,TotalTime;
     public GameObject CustomGUI, cardUI, CardBase, Indicators;
     private CardLibrary library;
     private List<GameObject> cardQueue;
@@ -41,11 +41,12 @@ public class Custom : MonoBehaviour
     {
         if (cust)
         {
-            if(Bar.fillAmount >= 0)
+            if(Bar.fillAmount > 0)
             {
                 CustomTime -= Time.deltaTime;
                 Bar.fillAmount = CustomTime / CustomMaxTime;
             }
+            TotalTime += Time.deltaTime;
         }
         if (Input.GetButton("Cust"))
         {
@@ -99,6 +100,7 @@ public class Custom : MonoBehaviour
     {
         cust = false;
         playerCards = new List<Card>(library.CurrentSet);
+        cardQueue.Clear();
         Bar.fillAmount = 1;
         CustomTime = CustomMaxTime;
         transform.GetComponent<CombatMovement>().CanMove = false;
@@ -120,5 +122,10 @@ public class Custom : MonoBehaviour
                 card.data.IndicatorField = Indicators;
             }
         }
+    }
+    public void HideCust()
+    {
+        cardUI.SetActive(false);
+        CustomGUI.transform.Find("Bar").gameObject.SetActive(false);
     }
 }

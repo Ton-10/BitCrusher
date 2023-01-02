@@ -1,3 +1,4 @@
+// NPC Action
 using UnityEngine;
 
 public class GiveCard : Action
@@ -12,16 +13,5 @@ public class GiveCard : Action
         card.data.CardObj.transform.SetParent(card.data.Player.transform);
 
         Player.GetComponent<CardLibrary>().Inventory.Add(card);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
