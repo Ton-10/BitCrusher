@@ -6,6 +6,7 @@ public class Card : ScriptableObject
 {
     public CardData data;
     virtual public bool Hit{ get; set; }
+    protected string CardDescription;
     public virtual IEnumerator Activate()
     {
         Debug.Log($"Card: {data.Id} Activated");
@@ -14,11 +15,11 @@ public class Card : ScriptableObject
 
     public struct CardData
     {
-        public int Attack, RangeX, RangeY, Id, stage;
+        public int Attack, RangeX, RangeY, Id, CooldownFrames, stage;
         public bool IsNext, IsSelected, IsUsedUp;
         public GameObject Indicator;
         public GameObject Player, IndicatorField, CurIndicator, CardObj;
-        public int CooldownFrames;
+        
 
         public CardData(int attack, int rangeX, int rangeY, int id, int cooldown)
         {

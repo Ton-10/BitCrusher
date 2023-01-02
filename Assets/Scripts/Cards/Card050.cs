@@ -40,7 +40,7 @@ public class Card050 : Card
 
     public Card050()
     {
-        Debug.Log(int.Parse(GetType().ToString().Split('d')[1]));
+        CardDescription = "Straight shot(3x1)";
         data = new CardData(40, 3, 1, int.Parse(GetType().ToString().Split('d')[1]), 5);
 
 

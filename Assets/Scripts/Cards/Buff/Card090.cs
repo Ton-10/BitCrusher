@@ -10,6 +10,7 @@ public class Card090 : Card
 
     public Card090()
     {
+        CardDescription = "";
         data = new CardData(50, 2, 1, int.Parse(GetType().ToString().Split('d')[1]), 5);
         
     }

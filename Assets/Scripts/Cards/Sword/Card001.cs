@@ -10,6 +10,7 @@ public class Card001 : Card
 
     public Card001()
     {
+        CardDescription = "Straight Sword (2x1)";
         data = new CardData(60, 2, 1, int.Parse(GetType().ToString().Split('d')[1]), 5);
         
     }
